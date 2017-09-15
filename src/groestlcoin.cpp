@@ -306,8 +306,8 @@ static CBlock CreateGenesisBlock(const char* pszTimestamp, const CScript& genesi
 *   vMerkleTree: 4a5e1e
 */
 static CBlock CreateGenesisBlock(uint32_t nTime, uint32_t nNonce, uint32_t nBits, int32_t nVersion, const CAmount& genesisReward) {
-	const char* pszTimestamp = "Pressure must be put on Vladimir Putin over Crimea";
-	const CScript genesisOutputScript = CScript() << ParseHex("04678afdb0fe5548271967f1a67130b7105cd6a828e03909a67962e0ea1f61deb649f6bc3f4cef38c4f35504e51ec112de5c384df7ba0b8d578a4c702b6bf11d5f") << OP_CHECKSIG;
+	const char* pszTimestamp = "Elon Musk says AI could lead to third world war";
+	const CScript genesisOutputScript = CScript() << ParseHex("04ffff001d01042f456c6f6e204d75736b207361797320414920636f756c64206c65616420746f20746869726420776f726c6420776172") << OP_CHECKSIG;
 	return CreateGenesisBlock(pszTimestamp, genesisOutputScript, nTime, nNonce, nBits, nVersion, genesisReward);
 }
 
@@ -367,11 +367,11 @@ public:
         pchMessageStart[2] = 0xb4;
         pchMessageStart[3] = 0xd4;
 
-		nDefaultPort = 1331;
+		nDefaultPort = 1111;
         nPruneAfterHeight = 10000000;
 
 
-		genesis = CreateGenesisBlock(1395342829, 220035, 0x1e0fffff, 112, 0);
+
 
         /**
          * Build the genesis block. Note that the output of its generation
@@ -392,16 +392,12 @@ public:
         genesis.hashPrevBlock.SetNull();
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
 		*/
+				//genesis = CreateGenesisBlock(1505480666, 220035, 0x1e0fffff, 112, 0);
+        //consensus.hashGenesisBlock = genesis.GetHash();
+		//assert(consensus.hashGenesisBlock == uint256S("0x00000ac5927c594d49cc0bdb81759d0da8297eb614683d3acb62f0703b639023"));
+		//assert(genesis.hashMerkleRoot == uint256S("0x3ce968df58f9c8a752306c4b7264afab93149dbc578bd08a42c446caaa6628bb"));
 
-        consensus.hashGenesisBlock = genesis.GetHash();
-		assert(consensus.hashGenesisBlock == uint256S("0x00000ac5927c594d49cc0bdb81759d0da8297eb614683d3acb62f0703b639023"));
-		assert(genesis.hashMerkleRoot == uint256S("0x3ce968df58f9c8a752306c4b7264afab93149dbc578bd08a42c446caaa6628bb"));
-
-        vSeeds.push_back(CDNSSeedData("groestlcoin.org", "groestlcoin.org"));
-		vSeeds.push_back(CDNSSeedData("electrum1.groestlcoin.org", "electrum1.groestlcoin.org"));
-		vSeeds.push_back(CDNSSeedData("electrum2.groestlcoin.org", "electrum2.groestlcoin.org"));
-		vSeeds.push_back(CDNSSeedData("jswallet.groestlcoin.org", "jswallet.groestlcoin.org"));
-		vSeeds.push_back(CDNSSeedData("groestlsight.groestlcoin.org", "groestlsight.groestlcoin.org"));
+        //vSeeds.push_back(CDNSSeedData("MOLNetwork.org", "MOLNetwork.org"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,36);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -471,26 +467,29 @@ public:
         pchMessageStart[2] = 0x09;
         pchMessageStart[3] = 0x07;
 
-        nDefaultPort = 17777;
+        nDefaultPort = 2222;
         nPruneAfterHeight = 1000000;
-
-/*!!!R		for (int nonce=1; nonce < 0x7FFFFFFF; ++nonce) {
-			genesis = CreateGenesisBlock(1440000002, nonce, 0x1e00ffff, 3, 0);
+/*
+			for (int nonce=1; nonce < 0x7FFFFFFF; ++nonce) {
+			genesis = CreateGenesisBlock(1505480606, nonce, 0x1e00ffff, 1, 0);
 			consensus.hashGenesisBlock = genesis.GetHash();
 			if (UintToArith256(consensus.hashGenesisBlock) < UintToArith256(consensus.powLimit))
 				break;
-		}
-		*/
+			}
+*/
+
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-		genesis = CreateGenesisBlock(1440000002, 6556309, 0x1e00ffff, 3, 0);
+				genesis = CreateGenesisBlock(1505480606, 5799836, 0x1e00ffff, 1, 0);
+				printf("New Genesis Block: %s\n", genesis.ToString().c_str());
         consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x000000ffbb50fc9898cdd36ec163e6ba23230164c0052a28876255b7dcf2cd36"));
+        assert(consensus.hashGenesisBlock == uint256S("0x000000377a2006523929a2f13fa9ae9b1d4acf93ea68dc30229dd0caa739a901"));
+				assert(genesis.hashMerkleRoot == uint256S("0x608fe45811c4f31eec5999d5e5ec4030a290a19c1b17ffe1c3d1a6030a75f9dc"));
 
-        vFixedSeeds.clear();
+				vFixedSeeds.clear();
         vSeeds.clear();
-		vSeeds.push_back(CDNSSeedData("testnet1.groestlcoin.org", "testnet1.groestlcoin.org"));
-		vSeeds.push_back(CDNSSeedData("testnet2.groestlcoin.org", "testnet2.groestlcoin.org"));
+
+				//vSeeds.push_back(CDNSSeedData("MOLNetwork.groestlcoin.org", "MOLNetwork.groestlcoin.org"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,111);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,196);
