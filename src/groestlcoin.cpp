@@ -399,6 +399,12 @@ public:
 
         //vSeeds.push_back(CDNSSeedData("MOLNetwork.org", "MOLNetwork.org"));
 
+				genesis = CreateGenesisBlock(1505480606, 5799836, 0x1e00ffff, 1, 0);
+				printf("New Genesis Block: %s\n", genesis.ToString().c_str());
+        consensus.hashGenesisBlock = genesis.GetHash();
+        assert(consensus.hashGenesisBlock == uint256S("0x000000377a2006523929a2f13fa9ae9b1d4acf93ea68dc30229dd0caa739a901"));
+				assert(genesis.hashMerkleRoot == uint256S("0x608fe45811c4f31eec5999d5e5ec4030a290a19c1b17ffe1c3d1a6030a75f9dc"));
+
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,36);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
         base58Prefixes[SECRET_KEY] =     std::vector<unsigned char>(1,128);
@@ -480,11 +486,7 @@ public:
 
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
-				genesis = CreateGenesisBlock(1505480606, 5799836, 0x1e00ffff, 1, 0);
-				printf("New Genesis Block: %s\n", genesis.ToString().c_str());
-        consensus.hashGenesisBlock = genesis.GetHash();
-        assert(consensus.hashGenesisBlock == uint256S("0x000000377a2006523929a2f13fa9ae9b1d4acf93ea68dc30229dd0caa739a901"));
-				assert(genesis.hashMerkleRoot == uint256S("0x608fe45811c4f31eec5999d5e5ec4030a290a19c1b17ffe1c3d1a6030a75f9dc"));
+
 
 				vFixedSeeds.clear();
         vSeeds.clear();
