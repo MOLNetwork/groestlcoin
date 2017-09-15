@@ -332,7 +332,7 @@ public:
 		consensus.BIP66Height = 800000;
 		consensus.BIP65Height = INT_MAX;	//!!!?
 
-        consensus.powLimit = uint256S("00000fffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
+        consensus.powLimit = uint256S("000000ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff");
         consensus.nPowTargetTimespan = 14 * 24 * 60 * 60; // two weeks
         consensus.nPowTargetSpacing = 60;
         consensus.fPowAllowMinDifficultyBlocks = false;
@@ -392,19 +392,19 @@ public:
         genesis.hashPrevBlock.SetNull();
         genesis.hashMerkleRoot = genesis.BuildMerkleTree();
 		*/
-			genesis = CreateGenesisBlock(1505480666, 220035, 0x1e0fffff, 112, 0);
-      consensus.hashGenesisBlock = genesis.GetHash();
-			assert(consensus.hashGenesisBlock == uint256S("0x00000ac5927c594d49cc0bdb81759d0da8297eb614683d3acb62f0703b639023"));
-			assert(genesis.hashMerkleRoot == uint256S("0x3ce968df58f9c8a752306c4b7264afab93149dbc578bd08a42c446caaa6628bb"));
+				//genesis = CreateGenesisBlock(1505480666, 220035, 0x1e0fffff, 112, 0);
+        //consensus.hashGenesisBlock = genesis.GetHash();
+		//assert(consensus.hashGenesisBlock == uint256S("0x00000ac5927c594d49cc0bdb81759d0da8297eb614683d3acb62f0703b639023"));
+		//assert(genesis.hashMerkleRoot == uint256S("0x3ce968df58f9c8a752306c4b7264afab93149dbc578bd08a42c446caaa6628bb"));
 
         //vSeeds.push_back(CDNSSeedData("MOLNetwork.org", "MOLNetwork.org"));
 
-				//genesis = CreateGenesisBlock(1505480606, 5799836, 0x1e00ffff, 1, 0);
-				//printf("New Genesis Block: %s\n", genesis.ToString().c_str());
-        //consensus.hashGenesisBlock = genesis.GetHash();
-				//genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
-        //assert(consensus.hashGenesisBlock == uint256S("0x000000377a2006523929a2f13fa9ae9b1d4acf93ea68dc30229dd0caa739a901"));
-				//assert(genesis.hashMerkleRoot == uint256S("0x608fe45811c4f31eec5999d5e5ec4030a290a19c1b17ffe1c3d1a6030a75f9dc"));
+				genesis = CreateGenesisBlock(1505480606, 5799836, 0x1e00ffff, 1, 0);
+				printf("New Genesis Block: %s\n", genesis.ToString().c_str());
+        consensus.hashGenesisBlock = genesis.GetHash();
+				genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
+        assert(consensus.hashGenesisBlock == uint256S("0x000000377a2006523929a2f13fa9ae9b1d4acf93ea68dc30229dd0caa739a901"));
+				assert(genesis.hashMerkleRoot == uint256S("0x608fe45811c4f31eec5999d5e5ec4030a290a19c1b17ffe1c3d1a6030a75f9dc"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,36);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
