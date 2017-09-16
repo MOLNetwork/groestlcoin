@@ -399,12 +399,12 @@ public:
 
         //vSeeds.push_back(CDNSSeedData("MOLNetwork.org", "MOLNetwork.org"));
 
-				genesis = CreateGenesisBlock(1505480606, 5799836, 0x1e00ffff, 1, 0);
-				printf("New Genesis Block: %s\n", genesis.ToString().c_str());
-        consensus.hashGenesisBlock = genesis.GetHash();
-				genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
-        assert(consensus.hashGenesisBlock == uint256S("0x000000377a2006523929a2f13fa9ae9b1d4acf93ea68dc30229dd0caa739a901"));
-				assert(genesis.hashMerkleRoot == uint256S("0x608fe45811c4f31eec5999d5e5ec4030a290a19c1b17ffe1c3d1a6030a75f9dc"));
+				//genesis = CreateGenesisBlock(1505480606, 5799836, 0x1e00ffff, 1, 0);
+				//printf("New Genesis Block: %s\n", genesis.ToString().c_str());
+        //consensus.hashGenesisBlock = genesis.GetHash();
+				//genesis.hashMerkleRoot = BlockMerkleRoot(genesis);
+        //assert(consensus.hashGenesisBlock == uint256S("0x000000377a2006523929a2f13fa9ae9b1d4acf93ea68dc30229dd0caa739a901"));
+				//assert(genesis.hashMerkleRoot == uint256S("0x608fe45811c4f31eec5999d5e5ec4030a290a19c1b17ffe1c3d1a6030a75f9dc"));
 
         base58Prefixes[PUBKEY_ADDRESS] = std::vector<unsigned char>(1,36);
         base58Prefixes[SCRIPT_ADDRESS] = std::vector<unsigned char>(1,5);
@@ -478,12 +478,19 @@ public:
         nPruneAfterHeight = 1000000;
 /*
 			for (int nonce=1; nonce < 0x7FFFFFFF; ++nonce) {
-			genesis = CreateGenesisBlock(1505480606, nonce, 0x1e00ffff, 1, 0);
+			genesis = CreateGenesisBlock(1505480606, nonce, 0x1e00ffff, 3, 0);
 			consensus.hashGenesisBlock = genesis.GetHash();
 			if (UintToArith256(consensus.hashGenesisBlock) < UintToArith256(consensus.powLimit))
 				break;
 			}
 */
+
+			printf("%s\n", genesis.ToString().c_str());
+			genesis = CreateGenesisBlock(1505480606, 13943270, 0x1e00ffff, 3, 0);
+			consensus.hashGenesisBlock = genesis.GetHash();
+			assert(consensus.hashGenesisBlock == uint256S("0x000000cbc5ff9f765e35e843277ea104cf47b14b3f676a50217bb04d183f8868"));
+			assert(genesis.hashMerkleRoot == uint256S("0x608fe45811c4f31eec5999d5e5ec4030a290a19c1b17ffe1c3d1a6030a75f9dc"));
+
 
 
         //! Modify the testnet genesis block so the timestamp is valid for a later start.
